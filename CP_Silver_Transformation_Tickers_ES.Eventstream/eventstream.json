@@ -1,0 +1,479 @@
+{
+  "sources": [
+    {
+      "id": "44b34fe8-0bd5-4eb0-ac47-b5e2c181ca21",
+      "name": "CustomEndpoint-Source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "d0609281-ef4c-47ef-999f-d484cff9653e",
+      "name": "Lakehouse",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "8892430f-58bb-b250-4348-033568b18c8c",
+        "schema": "dbo",
+        "deltaTable": "Tickers",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "last",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "vwap",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "low",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "high",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "change",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "change_pct",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "trades",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "current_time",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "2f8cfab1-1e46-4245-9498-10866675d6ee",
+      "name": "CP_Silver_Transformation_Tickers_ES-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "CustomEndpoint-Source"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "CP_Silver_Transformation_Tickers_ES-stream"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "channel",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "channel"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "type",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "type"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "symbol",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "symbol"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "bid",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "bid"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "bid_qty",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "bid_qty"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "ask",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "ask"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "ask_qty",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "ask_qty"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "last",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "last"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "volume",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "volume"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "vwap",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "vwap"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "low",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "low"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "high",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "high"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "change",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "change"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "change_pct",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "change_pct"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "trades",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "trades"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "timestamp",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "timestamp"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "SystemTimestamp",
+              "arguments": []
+            },
+            "alias": "current_time"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "CP_Silver_Transformation_Tickers_ES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "last",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "vwap",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "low",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "high",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "change",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "change_pct",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "trades",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

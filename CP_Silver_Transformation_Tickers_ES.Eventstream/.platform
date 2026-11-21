@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "CP_Silver_Transformation_Tickers_ES"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "602f965f-98d3-8b42-424b-2ae0beb95ae6"
+  }
+}
