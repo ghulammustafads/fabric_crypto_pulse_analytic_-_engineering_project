@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "bronze_kraken_trades"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d950a0e1-2002-990a-4d80-4be2b7da6611"
+  }
+}
