@@ -1,0 +1,394 @@
+{
+  "sources": [
+    {
+      "id": "25ea5c75-0efb-405a-ae74-4f83df98b168",
+      "name": "CustomEndpoint-Source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "93c35678-0616-4aa4-89b1-97cf31adce59",
+      "name": "Lakehouse",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "8892430f-58bb-b250-4348-033568b18c8c",
+        "schema": "dbo",
+        "deltaTable": "ohlc",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "open",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "high",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "low",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "close",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "trades",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "vwap",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "interval_begin",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "interval",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "929695ae-816e-4cbb-b7b0-80174fab3bb0",
+      "name": "CP_Silver_Transformation_ohlc_ES-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "CustomEndpoint-Source"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "CP_Silver_Transformation_ohlc_ES-stream"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "channel",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "channel"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "type",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "type"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "symbol",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "symbol"
+          },
+          {
+            "type": "Cast",
+            "properties": {
+              "targetDataType": "Float",
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "open",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "open"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "high",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "high"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "low",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "low"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "close",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "close"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "trades",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "trades"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "volume",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "volume"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "vwap",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "vwap"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "interval_begin",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "interval_begin"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "interval",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "interval"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "timestamp",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "timestamp"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "CP_Silver_Transformation_ohlc_ES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "open",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "high",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "low",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "close",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "trades",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "volume",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "vwap",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "interval_begin",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "interval",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}
