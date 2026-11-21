@@ -1,0 +1,181 @@
+table fact_tickers
+	lineageTag: eea42538-9a7b-4f98-ab7a-db816989a58d
+	sourceLineageTag: [dbo].[fact_tickers]
+
+	column symbol_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ddcd437-bbcc-487f-95ce-c444fc0325ff
+		sourceLineageTag: symbol_id
+		summarizeBy: none
+		sourceColumn: symbol_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column symbol
+		dataType: string
+		lineageTag: 12ec6957-1355-4eaa-a7b7-7b8cb54bb5d3
+		sourceLineageTag: symbol
+		summarizeBy: none
+		sourceColumn: symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column bid
+		dataType: double
+		lineageTag: 97451e93-6ff6-46f8-8e79-a6cb5b0897ae
+		sourceLineageTag: bid
+		summarizeBy: sum
+		sourceColumn: bid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bid_qty
+		dataType: double
+		lineageTag: d0fc1011-803e-46f8-857e-4496d6ac017b
+		sourceLineageTag: bid_qty
+		summarizeBy: sum
+		sourceColumn: bid_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ask
+		dataType: double
+		lineageTag: a7678c73-bbc5-43e0-85a9-3f531f43ff60
+		sourceLineageTag: ask
+		summarizeBy: sum
+		sourceColumn: ask
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ask_qty
+		dataType: double
+		lineageTag: b0005cc5-eb37-4b7b-8a88-0debe22b244b
+		sourceLineageTag: ask_qty
+		summarizeBy: sum
+		sourceColumn: ask_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last
+		dataType: double
+		lineageTag: b733f9db-c4cc-4d96-8a78-5a2ebdf9d561
+		sourceLineageTag: last
+		summarizeBy: sum
+		sourceColumn: last
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume
+		dataType: double
+		lineageTag: 740b3fa2-4c97-409e-9989-60ab74fe59d9
+		sourceLineageTag: volume
+		summarizeBy: sum
+		sourceColumn: volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vwap
+		dataType: double
+		lineageTag: cc204485-31d7-4602-86f5-2f08bef4a65a
+		sourceLineageTag: vwap
+		summarizeBy: sum
+		sourceColumn: vwap
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low
+		dataType: double
+		lineageTag: c67951f3-ba01-4e9e-b51b-b052d682a817
+		sourceLineageTag: low
+		summarizeBy: sum
+		sourceColumn: low
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high
+		dataType: double
+		lineageTag: 8fc7aca6-d3f3-467b-914f-257352991793
+		sourceLineageTag: high
+		summarizeBy: sum
+		sourceColumn: high
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column change
+		dataType: double
+		lineageTag: a0ba3b2a-6e88-4d5e-b1e5-149e4b4420cb
+		sourceLineageTag: change
+		summarizeBy: sum
+		sourceColumn: change
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column change_pct
+		dataType: double
+		lineageTag: c3cfdf75-b9ee-4a6c-b834-160c44e0c311
+		sourceLineageTag: change_pct
+		summarizeBy: sum
+		sourceColumn: change_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column trades
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e9c9920-757e-4d95-becc-b34ee33e15b4
+		sourceLineageTag: trades
+		summarizeBy: sum
+		sourceColumn: trades
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 765491f3-01ef-4edc-a4ae-d8487b9ffb56
+		sourceLineageTag: timestamp
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column snapshot_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b2f23e44-4692-452f-bcb8-45c4ba7c9ad9
+		sourceLineageTag: snapshot_time
+		summarizeBy: none
+		sourceColumn: snapshot_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_tickers = entity
+		mode: directLake
+		source
+			entityName: fact_tickers
+			schemaName: dbo
+			expressionSource: 'DirectLake - CP_gold_lakhoue'
+

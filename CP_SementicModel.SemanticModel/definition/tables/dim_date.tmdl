@@ -1,0 +1,21 @@
+table dim_date
+	lineageTag: 683549de-3461-4b37-a067-e5dc6fd8146b
+	sourceLineageTag: [dbo].[dim_date]
+
+	column full_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9addb459-eb23-4968-8c6a-86c80fc53cbd
+		sourceLineageTag: full_date
+		summarizeBy: none
+		sourceColumn: full_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = entity
+		mode: directLake
+		source
+			entityName: dim_date
+			schemaName: dbo
+			expressionSource: 'DirectLake - CP_gold_lakhoue'
+

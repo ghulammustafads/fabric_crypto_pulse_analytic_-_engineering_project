@@ -1,0 +1,335 @@
+{
+  "sources": [
+    {
+      "id": "52744060-5dce-47b2-99aa-c4893b7e6035",
+      "name": "CustomEndpoint-Source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "2863b9aa-9a22-4afe-bc52-459b718ec4f9",
+      "name": "Lakehouse",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "8892430f-58bb-b250-4348-033568b18c8c",
+        "schema": "dbo",
+        "deltaTable": "Instrument",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "status",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precision",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precision_display",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "borrowable",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "collateral_value",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "class",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "margin_rate",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "transformation_timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "bfcd1a3a-9a1b-4214-b504-10c0d2092377",
+      "name": "CP_silver_transformation_instrument_ES-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "CustomEndpoint-Source"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "CP_silver_transformation_instrument_ES-stream"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "channel",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "channel"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "type",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "type"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "id",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "id"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "status",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "status"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "precision",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "precision"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "precision_display",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "precision_display"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "borrowable",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "borrowable"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "collateral_value",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "collateral_value"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "class",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "class"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "margin_rate",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "margin_rate"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "SystemTimestamp",
+              "arguments": []
+            },
+            "alias": "transformation_timestamp"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "CP_silver_transformation_instrument_ES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "status",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precision",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precision_display",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "borrowable",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "collateral_value",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "class",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "margin_rate",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

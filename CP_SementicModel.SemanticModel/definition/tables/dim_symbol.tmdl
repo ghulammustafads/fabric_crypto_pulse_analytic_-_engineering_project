@@ -1,0 +1,30 @@
+table dim_symbol
+	lineageTag: 1b0e91cc-5cbd-4b80-871e-42f033f617b9
+	sourceLineageTag: [dbo].[dim_symbol]
+
+	column symbol_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b0ba9f8-2f3e-41d8-bf84-ceda4390eea8
+		sourceLineageTag: symbol_id
+		summarizeBy: none
+		sourceColumn: symbol_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column symbol
+		dataType: string
+		lineageTag: 15cd2b6d-7a4a-458e-92fc-0375a9dc463a
+		sourceLineageTag: symbol
+		summarizeBy: none
+		sourceColumn: symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_symbol = entity
+		mode: directLake
+		source
+			entityName: dim_symbol
+			schemaName: dbo
+			expressionSource: 'DirectLake - CP_gold_lakhoue'
+
