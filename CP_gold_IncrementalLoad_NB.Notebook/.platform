@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "CP_gold_IncrementalLoad_NB"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a48911aa-3146-87e0-4a0c-47d3d9c230a6"
+  }
+}

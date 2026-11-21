@@ -1,0 +1,5 @@
+dependencies:
+  - pip:
+      - confluent-kafka==2.16.0rc3
+      - kafka-python==3.0.11
+      - websocket-client==1.9.2
