@@ -1,0 +1,311 @@
+{
+  "sources": [
+    {
+      "id": "f701e0d0-df58-49e2-b22d-ee312af1b71d",
+      "name": "CustomEndpoint-Source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "c23f2872-c4b0-44ee-ab91-9949fab18822",
+      "name": "Lakehouse",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "8892430f-58bb-b250-4348-033568b18c8c",
+        "schema": "dbo",
+        "deltaTable": "books",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "ManageFields"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "ManageFields",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid_price",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask_price",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "checksum",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "transformation_timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "e216c6a7-1574-44e9-b832-95b00c55bc91",
+      "name": "CP_silver_Transformation_books_ES-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "CustomEndpoint-Source"
+        }
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "name": "ManageFields",
+      "type": "ManageFields",
+      "inputNodes": [
+        {
+          "name": "CP_silver_Transformation_books_ES-stream"
+        }
+      ],
+      "properties": {
+        "columns": [
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "channel",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "channel"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "type",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "type"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "symbol",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "symbol"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "bid_price",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "bid_price"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "bid_qty",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "bid_qty"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "ask_price",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "ask_price"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "ask_qty",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "ask_qty"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "checksum",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "checksum"
+          },
+          {
+            "type": "Rename",
+            "properties": {
+              "column": {
+                "expressionType": "ColumnReference",
+                "node": null,
+                "columnName": "timestamp",
+                "columnPathSegments": []
+              }
+            },
+            "alias": "timestamp"
+          },
+          {
+            "type": "FunctionCall",
+            "properties": {
+              "functionName": "SystemTimestamp",
+              "arguments": []
+            },
+            "alias": "transformation_timestamp"
+          }
+        ]
+      },
+      "inputSchemas": [
+        {
+          "name": "CP_silver_Transformation_books_ES-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "channel",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "type",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "symbol",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid_price",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "bid_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask_price",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ask_qty",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "checksum",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "timestamp",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "compatibilityLevel": "1.1"
+}

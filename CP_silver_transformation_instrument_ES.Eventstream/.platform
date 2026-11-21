@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "CP_silver_transformation_instrument_ES"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c52c8c69-9457-9975-4ac8-ccdf9ed62664"
+  }
+}

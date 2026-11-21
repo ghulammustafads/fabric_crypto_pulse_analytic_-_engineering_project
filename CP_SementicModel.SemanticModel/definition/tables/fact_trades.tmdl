@@ -1,0 +1,90 @@
+table fact_trades
+	lineageTag: dd391f01-5be8-464d-a446-9d6c2d0242dc
+	sourceLineageTag: [dbo].[fact_trades]
+
+	column symbol_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d82451ee-210c-4995-b395-2c33432fed5a
+		sourceLineageTag: symbol_id
+		summarizeBy: none
+		sourceColumn: symbol_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column symbol
+		dataType: string
+		lineageTag: 451a2056-bd69-4548-ab53-95024ec2f3ed
+		sourceLineageTag: symbol
+		summarizeBy: none
+		sourceColumn: symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column side
+		dataType: string
+		lineageTag: 835f811e-8bf6-4aed-9edf-b678624624eb
+		sourceLineageTag: side
+		summarizeBy: none
+		sourceColumn: side
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: fe1a2fab-9fb8-4199-bb15-7cb6b3c1db04
+		sourceLineageTag: price
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qty
+		dataType: double
+		lineageTag: 7994509d-0c94-41eb-9f3f-2e2cc1f7866d
+		sourceLineageTag: qty
+		summarizeBy: sum
+		sourceColumn: qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column order_type
+		dataType: string
+		lineageTag: ffeba437-f5a3-4e19-b35b-02a5870526f8
+		sourceLineageTag: order_type
+		summarizeBy: none
+		sourceColumn: order_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column trade_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9df4a77f-378f-4608-b3e3-95dd053914d4
+		sourceLineageTag: trade_id
+		summarizeBy: sum
+		sourceColumn: trade_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6db85456-acf8-4261-b50c-4bf2f1878917
+		sourceLineageTag: timestamp
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_trades = entity
+		mode: directLake
+		source
+			entityName: fact_trades
+			schemaName: dbo
+			expressionSource: 'DirectLake - CP_gold_lakhoue'
+

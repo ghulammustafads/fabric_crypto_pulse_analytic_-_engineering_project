@@ -1,0 +1,26 @@
+relationship 7ac7caa2-548e-cc56-9c6a-38e3b1a8459e
+	fromColumn: fact_trades.timestamp
+	toColumn: dim_date.full_date
+
+relationship 9e613268-4d28-754d-ac3b-3ded24a4beb8
+	crossFilteringBehavior: bothDirections
+	fromColumn: fact_ohlc.timestamp
+	toColumn: dim_date.full_date
+
+relationship ba36e9c8-58dd-3c09-c3ee-785138b51255
+	fromColumn: fact_tickers.timestamp
+	toColumn: dim_date.full_date
+
+relationship 2726461f-8948-2f5e-c5f2-fdf90750dff4
+	fromColumn: fact_ohlc.symbol_id
+	toColumn: dim_symbol.symbol_id
+
+relationship 658ca291-7229-19af-bea4-243c101a1310
+	crossFilteringBehavior: bothDirections
+	fromColumn: fact_tickers.symbol_id
+	toColumn: dim_symbol.symbol_id
+
+relationship 47ca2c76-f3d3-d3d0-0971-d6cc80f66fac
+	fromColumn: fact_trades.symbol_id
+	toColumn: dim_symbol.symbol_id
+

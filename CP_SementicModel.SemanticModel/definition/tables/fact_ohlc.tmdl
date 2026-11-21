@@ -1,0 +1,145 @@
+table fact_ohlc
+	lineageTag: 0e2ac287-c61d-4d57-b8d4-fdf7466d04ac
+	sourceLineageTag: [dbo].[fact_ohlc]
+
+	column symbol_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 767b7f5d-114d-44d8-8731-52481c14ab4b
+		sourceLineageTag: symbol_id
+		summarizeBy: none
+		sourceColumn: symbol_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column symbol
+		dataType: string
+		lineageTag: 55ddfafe-9a4a-4610-9b88-1d79d9ce9306
+		sourceLineageTag: symbol
+		summarizeBy: none
+		sourceColumn: symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column open
+		dataType: double
+		lineageTag: 65e1093d-e4ac-45f8-9499-762d9c2dea0f
+		sourceLineageTag: open
+		summarizeBy: sum
+		sourceColumn: open
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high
+		dataType: double
+		lineageTag: 07845be6-1528-449e-b4d1-12a479cf3ecb
+		sourceLineageTag: high
+		summarizeBy: sum
+		sourceColumn: high
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low
+		dataType: double
+		lineageTag: 3a864140-4666-4dbb-b008-2a59c5ca2341
+		sourceLineageTag: low
+		summarizeBy: sum
+		sourceColumn: low
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column close
+		dataType: double
+		lineageTag: 6872b228-c81e-498a-b2ce-468f4750544b
+		sourceLineageTag: close
+		summarizeBy: sum
+		sourceColumn: close
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column trades
+		dataType: int64
+		formatString: 0
+		lineageTag: f0c0e0bc-2d45-4744-aa1d-7d8ff2d95367
+		sourceLineageTag: trades
+		summarizeBy: sum
+		sourceColumn: trades
+
+		annotation SummarizationSetBy = Automatic
+
+	column volume
+		dataType: double
+		lineageTag: ecc8a694-aa28-4c92-8711-917216bf3b4d
+		sourceLineageTag: volume
+		summarizeBy: sum
+		sourceColumn: volume
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vwap
+		dataType: double
+		lineageTag: 4b16435f-fba4-4c75-b322-9c312cd0a210
+		sourceLineageTag: vwap
+		summarizeBy: sum
+		sourceColumn: vwap
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column interval_begin
+		dataType: string
+		lineageTag: 8f6fbd36-0a23-40d0-8358-9ec4bc0cddae
+		sourceLineageTag: interval_begin
+		summarizeBy: none
+		sourceColumn: interval_begin
+
+		annotation SummarizationSetBy = Automatic
+
+	column interval
+		dataType: int64
+		formatString: 0
+		lineageTag: 85ad3705-71c8-4ec6-b86a-f0827b4a48d9
+		sourceLineageTag: interval
+		summarizeBy: sum
+		sourceColumn: interval
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0df9833c-f943-432a-83b9-7d9c7b031474
+		sourceLineageTag: timestamp
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e47682be-36e6-44b3-8311-adbfefcdd1f0
+		sourceLineageTag: processed_at
+		summarizeBy: none
+		sourceColumn: processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_ohlc = entity
+		mode: directLake
+		source
+			entityName: fact_ohlc
+			schemaName: dbo
+			expressionSource: 'DirectLake - CP_gold_lakhoue'
+
